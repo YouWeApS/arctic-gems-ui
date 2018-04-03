@@ -1,7 +1,11 @@
 module Arctic
   module Core
     class Configuration
-      attr_accessor :token
+      attr_accessor :token, :url
+
+      def initialize
+        self.url ||= 'http://localhost:5000/api/v1'
+      end
     end
 
     class << self
