@@ -2,7 +2,8 @@ PATH
   remote: .
   specs:
     arctic-core (0.0.1)
-      activesupport
+      activesupport (~> 5.1)
+      faraday (~> 0.14)
 
 GEM
   remote: https://rubygems.org/
@@ -14,9 +15,12 @@ GEM
       tzinfo (~> 1.1)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
+    faraday (0.14.0)
+      multipart-post (>= 1.2, < 3)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
+    multipart-post (2.0.0)
     rake (10.5.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)

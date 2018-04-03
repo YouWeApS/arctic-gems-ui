@@ -1,5 +1,5 @@
 module Arctic
-  class Core
+  module Core
     VERSION = "0.0.1"
   end
 end

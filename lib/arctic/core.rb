@@ -1,7 +1,9 @@
 require 'active_support/all'
+
 require 'arctic/core/version'
+require 'arctic/core/configuration'
 
 module Arctic
-  class Core
+  module Core
   end
 end
