@@ -28,3 +28,11 @@ arctic_compatible_json = {
 }
 ArcticCore.post arctic_compatible_json
 ```
+
+## Testing
+
+To run all the tests:
+
+```bash
+rake
+```
