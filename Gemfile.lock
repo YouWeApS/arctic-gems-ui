@@ -4,6 +4,7 @@ PATH
     arctic-core (0.0.1)
       activesupport (~> 5.1)
       faraday (~> 0.14)
+      faraday-detailed_logger
       faraday_middleware
       faraday_middleware-parse_oj (~> 0.3.2)
 
@@ -23,6 +24,8 @@ GEM
     diff-lcs (1.3)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
+    faraday-detailed_logger (2.1.2)
+      faraday (~> 0.8)
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
     faraday_middleware-parse_oj (0.3.2)

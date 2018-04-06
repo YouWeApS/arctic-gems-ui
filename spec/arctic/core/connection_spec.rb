@@ -1,7 +1,7 @@
 require "spec_helper"
 require 'webmock/rspec'
 
-RSpec.describe Arctic::Core do
+RSpec.describe Arctic::Core::Connection do
   before do
     Arctic::Core.configure do |c|
       c.token = 'Hello'
@@ -9,11 +9,11 @@ RSpec.describe Arctic::Core do
   end
 
   describe 'get' do
-    subject { Arctic::Core.get 'somewhere', params: { a: :b } }
+    subject { Arctic::Core::Connection.get 'somewhere', params: { a: :b } }
     let!(:stub) do
       stub_request(
         :get,
-        "http://localhost:5000/api/v1/somewhere?a=b&access_token=Hello")
+        "http://localhost:5000/api/v1/somewhere?a=b")
       .to_return(
         status: 200)
     end
@@ -25,11 +25,11 @@ RSpec.describe Arctic::Core do
   end
 
   describe 'post' do
-    subject { Arctic::Core.post 'somewhere', json: { a: :b }, params: { c: :d } }
+    subject { Arctic::Core::Connection.post 'somewhere', json: { a: :b }, params: { c: :d } }
     let!(:stub) do
       stub_request(
         :post,
-        "http://localhost:5000/api/v1/somewhere?access_token=Hello&c=d")
+        "http://localhost:5000/api/v1/somewhere?c=d")
       .with(
         body: { a: :b }.to_json)
       .to_return(
