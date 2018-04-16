@@ -3,36 +3,16 @@
 This gem is used by the arctic receivers to interact with and send data to the
 arctic core API.
 
-## Usage
+## Documentation
 
-Installation
+The documentation is generated from the slate-app in the documentation folder, and is available here: https://youweaps.github.io/arctic-gems-core
 
-```
-gem 'arctic_core'
-```
+### Publishing documentation
 
-Then configure it
+First make sure that all code is tested and committed to the Github master branch.
 
-```ruby
-ArcticCore.configure do |config|
-  config.token = 'PreSharedReceiverAuthToken'
-end
-```
-
-Then connect to the producer of data (fx. Dandomain) and retrieve and reformat
-the information to Arctic core compatible json.
-
-```ruby
-arctic_compatible_json = {
-  # arctic compatible jsom goes here
-}
-ArcticCore.post arctic_compatible_json
-```
-
-## Testing
-
-To run all the tests:
+The deploy the documentation to github pages:
 
 ```bash
-rake
+cd documentation && ./deploy.sh && cd -
 ```
