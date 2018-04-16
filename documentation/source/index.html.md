@@ -3,7 +3,6 @@ title: Arctic Core API SDK Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - ruby
-  - php
 
 toc_footers:
   - <a href='mailto:info@youwe.dk'>Contact us for an account</a>
@@ -20,57 +19,47 @@ The Arctic Core API is the central API for easy synchronization and distribution
 
 This SDK gives you a programmable way to interact with the Core API. You can also explore the API in a more interactive and direct way via our [Swagger documentation](https://arctic-core.herokuapp.com).
 
-# Authentication
+If you're developing an integration for a webshop and/or ERP system, please contact us for further documentation.
+
+# Configuration
 
 ```ruby
-require 'arctic-core-api'
+require 'arctic/core'
 
-api = Arctic::Core::API.new YOUR_CLIENT_ID, YOUR_CLIENT_SECRET
-# => <#Arctic::Core::API>
-
-bearer_token = api.authorize!(email, password)
-# => 746cd2cdc74cd5f0f91f2031ab47569377118a247972d29f40fcf1ac4814eedb
+Arctic::Core.configure do |config|
+  config.client_id = "CLIENT_ID"
+  config.client_secret = "CLIENT_SECRET"
+end
 ```
 
-```php
-<?
-require 'arctic-core-api';
+> Make sure to replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with the information from the account given to you.
 
-define("YOUR_CLIENT_ID", "YOUR_CLIENT_ID");
-define("YOUR_CLIENT_SECRET", "YOUR_CLIENT_SECRET");
+After we have setup an account for you, you will get a `CLIENT_ID` and `CLIENT_SECRET`.
 
-$api = new Arctic::Core::API(YOUR_CLIENT_ID, YOUR_CLIENT_SECRET);
-# => <#Arctic::Core::API>
-
-bearer_token = $api->authorize!(email, password);
-# => 746cd2cdc74cd5f0f91f2031ab47569377118a247972d29f40fcf1ac4814eedb
-?>
-```
-
-> Make sure to replace `YOUR_CLIENT_ID`, `YOUR_CLIENT_SECRET`, `email`, and `password` with the credentials we send you when you get your account.
+The `CLIENT_ID` and the `CLIENT_SECRET` should be stored inside your application in a secure way.
 
 To get a set of credentials, please <a href="mailto:info@youwe.dk">get in touch</a> with us.
 
-After you sign up for an account, you will get a `client_id`, `client_secret`, `email`, and a `password`. All of which you will need to access the API.
+# Authentication
 
-The Arctic project account that you sign up for can have multiple users. Under the hood the SDK uses OAuth2 to exchange your personal email and password for a token to access your account.
+```ruby
+require 'arctic/core'
 
-The `client_id` and the `client_secret` should be stored inside your application. The `email` and `password` should be supplied by the user of your application.
+api = Arctic::Core::API.new email, password
+```
 
-<aside class="notice">For the rest of the documentation it's assumes that we're working with an authenticated API instance object.</aside>
+The `email` and `password` should be supplied by the user. The user should be associated with your account.
+
+You can setup, create and manage users for your account in your [Arctic Backoffice](https://arctic.com/backoffice).
+
+<aside class="notice">For the rest of the documentation it's assumes that you have sucessfully completed the Configuration and Authentication steps.</aside>
 
 # Account
 
-## Get the user's account
+## Get account information
 
 ```ruby
-api.account
-```
-
-```php
-<?
-$api->account();
-?>
+api.get_account
 ```
 
 > Example response
@@ -89,16 +78,10 @@ $api->account();
 
 The user's account represents the account object. This is the central object that all users and shops are related to. This also holds your rate limit information (see the Rate Limiting section).
 
-## Update the user's account
+## Update account information
 
 ```ruby
-api.accountUpdate name: 'New Account Name'
-```
-
-```php
-<?
-$api->accountUpdate({ 'name' => 'New Account Name' });
-?>
+api.update_account name: 'New Account Name'
 ```
 
 > Example response
@@ -123,18 +106,10 @@ name | The human readable name of your account
 
 # Shops
 
-## List your shops
-
-This will return a list of the shops available on your account.
+## List shops
 
 ```ruby
-api.shops
-```
-
-```php
-<?
-$api->shops();
-?>
+api.get_shops
 ```
 
 > Example response
@@ -151,3 +126,52 @@ $api->shops();
   }
 ]
 ```
+
+This will return a list of the shops available on your account.
+
+## Update an existing shop's information
+
+```ruby
+api.update_shops id: 'a30c348a-0396-4c86-8aee-3af3c782862c', name: 'Norwegian shop'
+```
+
+> Example response
+
+```json
+{
+  "id": "a30c348a-0396-4c86-8aee-3af3c782862c",
+  "name": "Norwegian shop"
+}
+```
+
+Possible shop attributes to update
+
+Attribute | Type | Description
+--------- | ---- | -----------
+name | String | The human readable identifier of the shop on the Arctic platform
+preprocessors | Array | A list of preprocessor IDs to use for your shop
+
+# Preprocessors
+
+## List available preprocessors
+
+```ruby
+api.get_preprocessors
+```
+
+> Example response
+
+```json
+[
+  {
+    "id": "8680cc9b-12d5-4bbd-a4ff-f176ef90d676",
+    "name": "Dandomain"
+  },
+  {
+    "id": "062da138-c0c1-46b2-b0fd-b43f9a2ad888",
+    "name": "Amazon UK"
+  },
+]
+```
+
+A preprocessor represents a connection between where you're hosting your webshop (e.g. Dandomain) and our system. A preprocessor will pull the items from your system into the Arctic system, from where they will be distributed throug Postprocessors.

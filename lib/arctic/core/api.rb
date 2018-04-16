@@ -2,52 +2,68 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'uri'
 require 'faraday'
+require 'oauth2'
+require 'faraday_middleware'
+require 'faraday-http-cache'
 
 module Arctic
   module Core
     class API
-      # Fetch all shops based on the account_id
-      def self.shops(account_id)
-        response = make_request :get, "preprocessors/accounts/#{account_id}/shops"
-        JSON.parse(response.body).deep_symbolize_keys
-      end
+      attr_reader :connection
 
-      # Update a batch of products
-      def self.update_products(account_id, shop_id, products)
-        responses = products.in_groups_of(1000, false).collect do |batch|
-          make_request :patch, "preprocessors/accounts/#{account_id}/shops/#{shop_id}/products", { products: batch }
-        end
-        respond_to_batch responses
-      end
+      def initialize(username, password)
+        bearer_token = authenticate!(username, password).token
 
-      # Create a batch of products
-      def self.create_products(account_id, shop_id, products)
-        responses = products.in_groups_of(1000, false).collect do |batch|
-          make_request :post, "preprocessors/accounts/#{account_id}/shops/#{shop_id}/products", { products: batch }
-        end
-        respond_to_batch responses
-      end
+        # Construct connection object
+        @connection = Faraday.new(Arctic::Core.configuration.url) do |conn|
+          conn.request :oauth2, bearer_token, token_type: :bearer
+          conn.request :json
 
-      def self.make_request(method, path, body = nil)
-        url = "#{Arctic::Core.configuration.url}/#{path}"
-        Faraday.public_send(method, url) do |r|
-          r.headers['Authorization'] = "Preprocessor #{ENV.fetch('CORE_KEY', 'NO_CORE_KEY')}"
-          r.headers['Content-Type'] = 'application/json'
-          r.headers['Accept'] = 'application/json'
-          r.body = body.to_json if body
-        end
-      end
+          conn.response :json
 
-      def self.respond_to_batch(responses)
-        responses.collect do |response|
-          json = JSON.parse(response.body).deep_symbolize_keys
-          if response.status != 202
-            throw json[:error]
-          else
-            json[:job][:id]
+          # If there's a http cache configured, use it
+          if Arctic::Core.configuration.cache
+            conn.use :http_cache, store: Arctic::Core.configuration.cache
           end
+
+          conn.adapter Faraday.default_adapter
         end
+
+        # Add Client ID to al l requests
+        connection.headers['ClientId'] = Arctic::Core.configuration.client_id
       end
+
+      def method_missing(name, *args)
+        method = name.to_s.gsub /(get|update|create)_/, 'ui/'
+
+        response = case name.to_s.downcase
+          when /get_/ then connection.get method, *args
+          when /update_/ then connection.patch method, *args
+          when /create_/ then connection.post method, *args
+          else super name, *aths
+          end
+
+        response.body
+      end
+
+      private
+
+        def authenticate!(username, password)
+          client = OAuth2::Client.new \
+            Arctic::Core.configuration.client_id,
+            Arctic::Core.configuration.client_secret,
+            {
+              site: Arctic::Core.configuration.url,
+              token_url: 'oauth/token',
+            }
+
+          client.password.get_token \
+            username,
+            password,
+            {
+              scope: Arctic::Core.configuration.scope,
+            }
+        end
     end
   end
 end

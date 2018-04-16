@@ -16,3 +16,13 @@ The deploy the documentation to github pages:
 ```bash
 cd documentation && ./deploy.sh && cd -
 ```
+
+### Running documentation server locally
+
+To run the documentation slate app locally:
+
+```bash
+cd documentation
+bundle install
+bundle exec middleman server # http://localhost:4567
+```
