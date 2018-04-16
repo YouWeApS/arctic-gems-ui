@@ -1,5 +1,5 @@
 ---
-title: Arctic Core API SDK Reference
+title: Arctic UI API SDK Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - ruby
@@ -15,11 +15,9 @@ search: true
 
 # Introduction
 
-The Arctic Core API is the central API for easy synchronization and distribution of your e-commerce goods to a wide range or e-commerce platforms.
+The Arctic UI API are the available endpoints for building UI applications to view and interact with the Arctic project core.
 
-This SDK gives you a programmable way to interact with the Core API. You can also explore the API in a more interactive and direct way via our [Swagger documentation](https://arctic-core.herokuapp.com).
-
-If you're developing an integration for a webshop and/or ERP system, please contact us for further documentation.
+This SDK gives you a programmable way to interact with the UI API. You can also explore the API in a more interactive and direct way via our [Swagger documentation](https://arctic-core.herokuapp.com).
 
 # Configuration
 
