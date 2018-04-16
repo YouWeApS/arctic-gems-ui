@@ -5,7 +5,7 @@ arctic core API.
 
 ## Documentation
 
-The documentation is generated from the slate-app in the documentation folder, and is available here: https://youweaps.github.io/arctic-gems-core
+The documentation is generated from the slate-app in the documentation folder, and is available here: https://youweaps.github.io/arctic-gems-ui
 
 ### Publishing documentation
 
