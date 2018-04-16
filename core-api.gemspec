@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "arctic/core/version"
+require "arctic/ui/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "arctic-core"
-  spec.version       = Arctic::Core::VERSION
+  spec.version       = Arctic::UI::VERSION
   spec.authors       = ["Emil Kampp"]
   spec.email         = ["emil@kampp.me"]
 

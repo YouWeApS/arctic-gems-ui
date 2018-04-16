@@ -5,11 +5,11 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'active_support/all'
 
-require 'arctic/core/version'
-require 'arctic/core/configuration'
-require 'arctic/core/api'
+require 'arctic/ui/version'
+require 'arctic/ui/configuration'
+require 'arctic/ui/api'
 
 module Arctic
-  module Core
+  module UI
   end
 end

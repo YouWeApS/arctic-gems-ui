@@ -1,5 +1,5 @@
 module Arctic
-  module Core
+  module UI
     class Configuration
       attr_accessor :client_id, :client_secret, :url, :scope, :cache
 

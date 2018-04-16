@@ -7,7 +7,7 @@ require 'faraday_middleware'
 require 'faraday-http-cache'
 
 module Arctic
-  module Core
+  module UI
     class API
       attr_reader :connection
 
@@ -15,22 +15,22 @@ module Arctic
         bearer_token = authenticate!(username, password).token
 
         # Construct connection object
-        @connection = Faraday.new(Arctic::Core.configuration.url) do |conn|
+        @connection = Faraday.new(Arctic::UI.configuration.url) do |conn|
           conn.request :oauth2, bearer_token, token_type: :bearer
           conn.request :json
 
           conn.response :json
 
           # If there's a http cache configured, use it
-          if Arctic::Core.configuration.cache
-            conn.use :http_cache, store: Arctic::Core.configuration.cache
+          if Arctic::UI.configuration.cache
+            conn.use :http_cache, store: Arctic::UI.configuration.cache
           end
 
           conn.adapter Faraday.default_adapter
         end
 
         # Add Client ID to al l requests
-        connection.headers['ClientId'] = Arctic::Core.configuration.client_id
+        connection.headers['ClientId'] = Arctic::UI.configuration.client_id
       end
 
       def method_missing(name, *args)
@@ -50,10 +50,10 @@ module Arctic
 
         def authenticate!(username, password)
           client = OAuth2::Client.new \
-            Arctic::Core.configuration.client_id,
-            Arctic::Core.configuration.client_secret,
+            Arctic::UI.configuration.client_id,
+            Arctic::UI.configuration.client_secret,
             {
-              site: Arctic::Core.configuration.url,
+              site: Arctic::UI.configuration.url,
               token_url: 'oauth/token',
             }
 
@@ -61,7 +61,7 @@ module Arctic
             username,
             password,
             {
-              scope: Arctic::Core.configuration.scope,
+              scope: Arctic::UI.configuration.scope,
             }
         end
     end

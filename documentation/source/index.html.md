@@ -24,9 +24,9 @@ If you're developing an integration for a webshop and/or ERP system, please cont
 # Configuration
 
 ```ruby
-require 'arctic/core'
+require 'arctic/ui'
 
-Arctic::Core.configure do |config|
+Arctic::UI.configure do |config|
   config.client_id = "CLIENT_ID"
   config.client_secret = "CLIENT_SECRET"
 end
@@ -43,9 +43,9 @@ To get a set of credentials, please <a href="mailto:info@youwe.dk">get in touch<
 # Authentication
 
 ```ruby
-require 'arctic/core'
+require 'arctic/ui'
 
-api = Arctic::Core::API.new email, password
+api = Arctic::UI::API.new email, password
 ```
 
 The `email` and `password` should be supplied by the user. The user should be associated with your account.

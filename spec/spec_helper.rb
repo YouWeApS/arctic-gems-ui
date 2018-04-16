@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require "bundler/setup"
-require "arctic/core"
+require "arctic/ui"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
