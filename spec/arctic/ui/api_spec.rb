@@ -1,54 +1,32 @@
 require "spec_helper"
 
 RSpec.describe Arctic::UI::API do
-  let(:token_instance) { double(token: 'abcdef') }
-  let(:password_client) { double(get_token: token_instance) }
-  let(:client) { double(password: password_client) }
   let(:username) { 'username' }
   let(:password) { 'password' }
-
-  let(:instance) { described_class.new username, password }
-
-  before do
-    expect(OAuth2::Client).to receive(:new).and_return client
+  let(:instance) do
+    token = double(token: 'abcdef123')
+    expect_any_instance_of(described_class).to receive(:authenticate!).and_return token
+    described_class.new username, password
   end
 
   describe '#new' do
     subject { instance }
+
     it { is_expected.to be_a described_class }
     it { expect(subject.connection).to be_a Faraday::Connection }
   end
 
-  describe '#get_<ENDPOINT>' do
-    subject { instance.get_endpoint }
+  describe 'delegates get_ update_ and create_ prefixes to connection' do
     let(:json) { { a: :b }.as_json }
+    let(:connection) { double }
 
-    before do
-      expect(instance).to receive(:method_missing).with(:get_endpoint).and_return json
+    %w(get update create).each do |prefix|
+      let(:method) { "#{prefix}_endpoint".to_sym }
+      subject { instance.public_send(method, { c: :d }) }
+      it do
+        expect(instance).to receive(:method_missing).with(method, { c: :d }).and_return json
+        is_expected.to eql(json)
+      end
     end
-
-    it { is_expected.to eql(json) }
-  end
-
-  describe '#update_<ENDPOINT>' do
-    subject { instance.update_endpoint(c: :d) }
-    let(:json) { { c: :d }.as_json }
-
-    before do
-      expect(instance).to receive(:method_missing).with(:update_endpoint, c: :d).and_return json
-    end
-
-    it { is_expected.to eql(json) }
-  end
-
-  describe '#create_<ENDPOINT>' do
-    subject { instance.create_endpoint(c: :d) }
-    let(:json) { { c: :d }.as_json }
-
-    before do
-      expect(instance).to receive(:method_missing).with(:create_endpoint, c: :d).and_return json
-    end
-
-    it { is_expected.to eql(json) }
   end
 end
