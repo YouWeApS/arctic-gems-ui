@@ -1,0 +1,401 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Arctic Core API SDK Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;ruby&quot;,&quot;php&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="php">php</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#account" class="toc-h1 toc-link" data-title="account">Account</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-the-user-39-s-account" class="toc-h2 toc-link" data-title="get-the-user-s-account">Get the user's account</a>
+                  </li>
+                  <li>
+                    <a href="#update-the-user-39-s-account" class="toc-h2 toc-link" data-title="update-the-user-s-account">Update the user's account</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#shops" class="toc-h1 toc-link" data-title="shops">Shops</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-your-shops" class="toc-h2 toc-link" data-title="list-your-shops">List your shops</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='mailto:info@youwe.dk'>Contact us for an account</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>The Arctic Core API is the central API for easy synchronization and distribution of your e-commerce goods to a wide range or e-commerce platforms.</p>
+
+<p>This SDK gives you a programmable way to interact with the Core API. You can also explore the API in a more interactive and direct way via our <a href="https://arctic-core.herokuapp.com">Swagger documentation</a>.</p>
+<h1 id='authentication'>Authentication</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'arctic-core-api'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Arctic</span><span class="o">::</span><span class="no">Core</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span> <span class="no">YOUR_CLIENT_ID</span><span class="p">,</span> <span class="no">YOUR_CLIENT_SECRET</span>
+<span class="c1"># =&gt; &lt;#Arctic::Core::API&gt;</span>
+
+<span class="n">bearer_token</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+<span class="c1"># =&gt; 746cd2cdc74cd5f0f91f2031ab47569377118a247972d29f40fcf1ac4814eedb</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
+<span class="k">require</span> <span class="s1">'arctic-core-api'</span><span class="p">;</span>
+
+<span class="nb">define</span><span class="p">(</span><span class="s2">"YOUR_CLIENT_ID"</span><span class="p">,</span> <span class="s2">"YOUR_CLIENT_ID"</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">"YOUR_CLIENT_SECRET"</span><span class="p">,</span> <span class="s2">"YOUR_CLIENT_SECRET"</span><span class="p">);</span>
+
+<span class="nv">$api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Arctic</span><span class="o">::</span><span class="na">Core</span><span class="o">::</span><span class="na">API</span><span class="p">(</span><span class="nx">YOUR_CLIENT_ID</span><span class="p">,</span> <span class="nx">YOUR_CLIENT_SECRET</span><span class="p">);</span>
+<span class="c1"># =&gt; &lt;#Arctic::Core::API&gt;
+</span>
+<span class="nx">bearer_token</span> <span class="o">=</span> <span class="nv">$api</span><span class="o">-&gt;</span><span class="na">authorize</span><span class="o">!</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">);</span>
+<span class="c1"># =&gt; 746cd2cdc74cd5f0f91f2031ab47569377118a247972d29f40fcf1ac4814eedb
+</span><span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>YOUR_CLIENT_ID</code>, <code>YOUR_CLIENT_SECRET</code>, <code>email</code>, and <code>password</code> with the credentials we send you when you get your account.</p>
+</blockquote>
+
+<p>To get a set of credentials, please <a href="mailto:info@youwe.dk">get in touch</a> with us.</p>
+
+<p>After you sign up for an account, you will get a <code>client_id</code>, <code>client_secret</code>, <code>email</code>, and a <code>password</code>. All of which you will need to access the API.</p>
+
+<p>The Arctic project account that you sign up for can have multiple users. Under the hood the SDK uses OAuth2 to exchange your personal email and password for a token to access your account.</p>
+
+<p>The <code>client_id</code> and the <code>client_secret</code> should be stored inside your application. The <code>email</code> and <code>password</code> should be supplied by the user of your application.</p>
+
+<aside class="notice">For the rest of the documentation it's assumes that we're working with an authenticated API instance object.</aside>
+<h1 id='account'>Account</h1><h2 id='get-the-user-39-s-account'>Get the user&#39;s account</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">account</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
+<span class="nv">$api</span><span class="o">-&gt;</span><span class="na">account</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"735108ed-55ef-4314-8295-b57fb0d1e05c"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob's webshop"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"throttling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The user&#39;s account represents the account object. This is the central object that all users and shops are related to. This also holds your rate limit information (see the Rate Limiting section).</p>
+<h2 id='update-the-user-39-s-account'>Update the user&#39;s account</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">accountUpdate</span> <span class="ss">name: </span><span class="s1">'New Account Name'</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
+<span class="nv">$api</span><span class="o">-&gt;</span><span class="na">accountUpdate</span><span class="p">({</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'New Account Name'</span> <span class="p">});</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"735108ed-55ef-4314-8295-b57fb0d1e05c"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Account Name"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"throttling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Possible account attributes you can update</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The human readable name of your account</td>
+</tr>
+</tbody></table>
+<h1 id='shops'>Shops</h1><h2 id='list-your-shops'>List your shops</h2>
+<p>This will return a list of the shops available on your account.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">shops</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
+<span class="nv">$api</span><span class="o">-&gt;</span><span class="na">shops</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2270b57a-80ee-4a44-9cd3-014c0469b39d"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Danish shop"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a30c348a-0396-4c86-8aee-3af3c782862c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swedish shop"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h1 id='errors'>Errors</h1>
+<blockquote>
+<p>Example error response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid or missing Bearer token Authentication header"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The Arctic Core API uses the <a href="httpstatuses.com">HTTP status codes</a> list. Here is some additional explenations for some of the HTTP status codes.</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your Bearer token is incorrect or missing.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- Your Bearer token doesn&#39;t have the proper scopes for this action.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="php">php</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
