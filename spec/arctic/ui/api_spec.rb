@@ -1,31 +1,61 @@
 require "spec_helper"
 
 RSpec.describe Arctic::UI::API do
-  let(:username) { 'username' }
+  let(:instance) { described_class.new username, password }
+  let(:username) { 'eshoes@email.com' }
   let(:password) { 'password' }
-  let(:instance) do
-    token = double(token: 'abcdef123')
-    expect_any_instance_of(described_class).to receive(:authenticate!).and_return token
-    described_class.new username, password
+
+  describe 'shops endpoint' do
+    describe '#get_shops' do
+      let(:response_json) { instance.get_shops.deep_symbolize_keys }
+
+      it "returns a list of the account's shops" do
+        VCR.use_cassette('get_shops') do
+          expect(response_json).to eql([
+            {
+              id: "8e25477b-8cb3-4707-a304-599097ee5aa2",
+              name: "DK shop",
+            },
+          ])
+        end
+      end
+    end
   end
 
-  describe '#new' do
-    subject { instance }
+  describe 'account endpoint' do
+    describe '#update_account' do
+      let(:response_json) { instance.update_account(name: 'New Account Name').deep_symbolize_keys }
 
-    it { is_expected.to be_a described_class }
-    it { expect(subject.connection).to be_a Faraday::Connection }
-  end
+      it 'returns updates the account json' do
+        VCR.use_cassette('update_account') do
+          expect(response_json).to eql({
+            id: "10a6e55e-a89f-44b9-a394-62d463e4ef72",
+            name: "New Account Name",
+            throttling: {
+              interval: 1,
+              amount: 100,
+              current: 50,
+            },
+          })
+        end
+      end
+    end
 
-  describe 'delegates get_ update_ and create_ prefixes to connection' do
-    let(:json) { { a: :b }.as_json }
-    let(:connection) { double }
+    describe '#get_account' do
+      let(:response_json) { instance.get_account.deep_symbolize_keys }
 
-    %w(get update create).each do |prefix|
-      let(:method) { "#{prefix}_endpoint".to_sym }
-      subject { instance.public_send(method, { c: :d }) }
-      it do
-        expect(instance).to receive(:method_missing).with(method, { c: :d }).and_return json
-        is_expected.to eql(json)
+      it 'returns the Account JSON' do
+        VCR.use_cassette('get_account') do
+          expect(response_json).to eql({
+            id: "10a6e55e-a89f-44b9-a394-62d463e4ef72",
+            name: "EShoes",
+            throttling: {
+              interval: 1,
+              amount: 100,
+              current: 95,
+            },
+          })
+        end
       end
     end
   end

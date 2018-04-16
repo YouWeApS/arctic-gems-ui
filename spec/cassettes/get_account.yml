@@ -1,0 +1,131 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5000/v1/oauth/token
+    body:
+      encoding: UTF-8
+      string: client_id=2e088d752d61c023fbc91ca6c585a978a030187c4a18fbfb34ea39d78ef3c6a2&client_secret=3675b0433b39d93eff54921e45c948c42ed13df8425d9f686a038de7685d30e0&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread&username=eshoes%40email.com
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"94f69ad351c2445f611725983455eb3c"
+      X-Request-Id:
+      - 0baeedf7-b927-48a4-b48f-8ae7b758e542
+      X-Runtime:
+      - '0.102567'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"316d293c0ff43956dcdff76773751ea7080eb2bf5448f1a3038991cd5f0aa8c6","token_type":"bearer","expires_in":7200,"refresh_token":"54e867908a033d4f7fb52c40dee3c6f256dda6a9410d869220f0a3e970b90a23","scope":"ui
+        account:read account:update shops:read","created_at":1523885876}'
+    http_version: 
+  recorded_at: Mon, 16 Apr 2018 13:37:56 GMT
+- request:
+    method: get
+    uri: http://localhost:5000/v1/ui/account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Clientid:
+      - 2e088d752d61c023fbc91ca6c585a978a030187c4a18fbfb34ea39d78ef3c6a2
+      Authorization:
+      - Bearer 316d293c0ff43956dcdff76773751ea7080eb2bf5448f1a3038991cd5f0aa8c6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Etag:
+      - W/"9cbc23eeae373f28a22c309852f2929c"
+      Last-Modified:
+      - Mon, 16 Apr 2018 08:44:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 2d860d8d-2dc5-411b-bad1-18b590e94db1
+      X-Runtime:
+      - '0.074495'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"10a6e55e-a89f-44b9-a394-62d463e4ef72","name":"EShoes","throttling":{"interval":1,"amount":100,"current":95}}'
+    http_version: 
+  recorded_at: Mon, 16 Apr 2018 13:37:56 GMT
+- request:
+    method: patch
+    uri: http://localhost:5000/v1/ui/account
+    body:
+      encoding: UTF-8
+      string: '{"name":"New Account Name"}'
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Clientid:
+      - 2e088d752d61c023fbc91ca6c585a978a030187c4a18fbfb34ea39d78ef3c6a2
+      Authorization:
+      - Bearer 316d293c0ff43956dcdff76773751ea7080eb2bf5448f1a3038991cd5f0aa8c6
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"a8fbf998147ffa09799ea8df1ca0cf5e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 60414e7a-4452-4b65-8c76-0d501c41adad
+      X-Runtime:
+      - '0.079501'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"10a6e55e-a89f-44b9-a394-62d463e4ef72","name":"New Account Name","throttling":{"interval":1,"amount":100,"current":75}}'
+    http_version: 
+  recorded_at: Mon, 16 Apr 2018 13:40:08 GMT
+recorded_with: VCR 4.0.0

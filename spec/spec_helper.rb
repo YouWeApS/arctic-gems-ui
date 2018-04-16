@@ -2,6 +2,13 @@ ENV['RACK_ENV'] = 'test'
 
 require "bundler/setup"
 require "arctic/ui"
+require "vcr"
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :webmock
+  c.default_cassette_options = { :record => :new_episodes }
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
