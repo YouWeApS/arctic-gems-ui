@@ -4,7 +4,7 @@ module Arctic
       attr_accessor :token, :url
 
       def initialize
-        self.url ||= 'http://localhost:5000/api/v1'
+        self.url ||= 'http://localhost:5000/v1'
       end
     end
 

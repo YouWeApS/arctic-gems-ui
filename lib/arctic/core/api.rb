@@ -8,34 +8,45 @@ module Arctic
     class API
       # Fetch all shops based on the account_id
       def self.shops(account_id)
-        format_response make_request :get, "preprocessors/accounts/#{account_id}/shops"
+        response = make_request :get, "preprocessors/accounts/#{account_id}/shops"
+        JSON.parse(response.body).deep_symbolize_keys
       end
 
-      # Updaet a single product
-      def self.update_product(account_id, shop_id, product)
-        product_id = URI.escape product[:id]
-        body = {
-          product: product,
-        }
+      # Update a batch of products
+      def self.update_products(account_id, shop_id, products)
+        responses = products.in_groups_of(1000, false).collect do |batch|
+          make_request :patch, "preprocessors/accounts/#{account_id}/shops/#{shop_id}/products", { products: batch }
+        end
+        respond_to_batch responses
+      end
 
-        make_request :patch, "preprocessors/accounts/#{account_id}/shops/#{shop_id}/products/#{product_id}", body
+      # Create a batch of products
+      def self.create_products(account_id, shop_id, products)
+        responses = products.in_groups_of(1000, false).collect do |batch|
+          make_request :post, "preprocessors/accounts/#{account_id}/shops/#{shop_id}/products", { products: batch }
+        end
+        respond_to_batch responses
       end
 
       def self.make_request(method, path, body = nil)
         url = "#{Arctic::Core.configuration.url}/#{path}"
-
-        response = Faraday.public_send(method, url) do |r|
+        Faraday.public_send(method, url) do |r|
           r.headers['Authorization'] = "Preprocessor #{ENV.fetch('CORE_KEY', 'NO_CORE_KEY')}"
           r.headers['Content-Type'] = 'application/json'
           r.headers['Accept'] = 'application/json'
           r.body = body.to_json if body
         end
-
-        format_response response
       end
 
-      def self.format_response(r)
-        r.body.deep_symbolize_keys
+      def self.respond_to_batch(responses)
+        responses.collect do |response|
+          json = JSON.parse(response.body).deep_symbolize_keys
+          if response.status != 202
+            throw json[:error]
+          else
+            json[:job][:id]
+          end
+        end
       end
     end
   end
