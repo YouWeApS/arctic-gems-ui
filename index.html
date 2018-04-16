@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;ruby&quot;,&quot;php&quot;]">
+  <body class="index" data-languages="[&quot;ruby&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,7 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="php">php</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -223,16 +222,19 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
+            <a href="#configuration" class="toc-h1 toc-link" data-title="configuration">Configuration</a>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
             <a href="#account" class="toc-h1 toc-link" data-title="account">Account</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-the-user-39-s-account" class="toc-h2 toc-link" data-title="get-the-user-s-account">Get the user's account</a>
+                    <a href="#get-account-information" class="toc-h2 toc-link" data-title="get-account-information">Get account information</a>
                   </li>
                   <li>
-                    <a href="#update-the-user-39-s-account" class="toc-h2 toc-link" data-title="update-the-user-s-account">Update the user's account</a>
+                    <a href="#update-account-information" class="toc-h2 toc-link" data-title="update-account-information">Update account information</a>
                   </li>
               </ul>
           </li>
@@ -240,7 +242,18 @@
             <a href="#shops" class="toc-h1 toc-link" data-title="shops">Shops</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-your-shops" class="toc-h2 toc-link" data-title="list-your-shops">List your shops</a>
+                    <a href="#list-shops" class="toc-h2 toc-link" data-title="list-shops">List shops</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-existing-shop-39-s-information" class="toc-h2 toc-link" data-title="update-an-existing-shop-s-information">Update an existing shop's information</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#preprocessors" class="toc-h1 toc-link" data-title="preprocessors">Preprocessors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-available-preprocessors" class="toc-h2 toc-link" data-title="list-available-preprocessors">List available preprocessors</a>
                   </li>
               </ul>
           </li>
@@ -259,43 +272,34 @@
 <p>The Arctic Core API is the central API for easy synchronization and distribution of your e-commerce goods to a wide range or e-commerce platforms.</p>
 
 <p>This SDK gives you a programmable way to interact with the Core API. You can also explore the API in a more interactive and direct way via our <a href="https://arctic-core.herokuapp.com">Swagger documentation</a>.</p>
-<h1 id='authentication'>Authentication</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'arctic-core-api'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Arctic</span><span class="o">::</span><span class="no">Core</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span> <span class="no">YOUR_CLIENT_ID</span><span class="p">,</span> <span class="no">YOUR_CLIENT_SECRET</span>
-<span class="c1"># =&gt; &lt;#Arctic::Core::API&gt;</span>
+<p>If you&#39;re developing an integration for a webshop and/or ERP system, please contact us for further documentation.</p>
+<h1 id='configuration'>Configuration</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'arctic/core'</span>
 
-<span class="n">bearer_token</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-<span class="c1"># =&gt; 746cd2cdc74cd5f0f91f2031ab47569377118a247972d29f40fcf1ac4814eedb</span>
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
-<span class="k">require</span> <span class="s1">'arctic-core-api'</span><span class="p">;</span>
-
-<span class="nb">define</span><span class="p">(</span><span class="s2">"YOUR_CLIENT_ID"</span><span class="p">,</span> <span class="s2">"YOUR_CLIENT_ID"</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s2">"YOUR_CLIENT_SECRET"</span><span class="p">,</span> <span class="s2">"YOUR_CLIENT_SECRET"</span><span class="p">);</span>
-
-<span class="nv">$api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Arctic</span><span class="o">::</span><span class="na">Core</span><span class="o">::</span><span class="na">API</span><span class="p">(</span><span class="nx">YOUR_CLIENT_ID</span><span class="p">,</span> <span class="nx">YOUR_CLIENT_SECRET</span><span class="p">);</span>
-<span class="c1"># =&gt; &lt;#Arctic::Core::API&gt;
-</span>
-<span class="nx">bearer_token</span> <span class="o">=</span> <span class="nv">$api</span><span class="o">-&gt;</span><span class="na">authorize</span><span class="o">!</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">);</span>
-<span class="c1"># =&gt; 746cd2cdc74cd5f0f91f2031ab47569377118a247972d29f40fcf1ac4814eedb
-</span><span class="cp">?&gt;</span>
+<span class="no">Arctic</span><span class="o">::</span><span class="no">Core</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">client_id</span> <span class="o">=</span> <span class="s2">"CLIENT_ID"</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">client_secret</span> <span class="o">=</span> <span class="s2">"CLIENT_SECRET"</span>
+<span class="k">end</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>YOUR_CLIENT_ID</code>, <code>YOUR_CLIENT_SECRET</code>, <code>email</code>, and <code>password</code> with the credentials we send you when you get your account.</p>
+<p>Make sure to replace <code>YOUR_CLIENT_ID</code> and <code>YOUR_CLIENT_SECRET</code> with the information from the account given to you.</p>
 </blockquote>
 
+<p>After we have setup an account for you, you will get a <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code>.</p>
+
+<p>The <code>CLIENT_ID</code> and the <code>CLIENT_SECRET</code> should be stored inside your application in a secure way.</p>
+
 <p>To get a set of credentials, please <a href="mailto:info@youwe.dk">get in touch</a> with us.</p>
+<h1 id='authentication'>Authentication</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'arctic/core'</span>
 
-<p>After you sign up for an account, you will get a <code>client_id</code>, <code>client_secret</code>, <code>email</code>, and a <code>password</code>. All of which you will need to access the API.</p>
+<span class="n">api</span> <span class="o">=</span> <span class="no">Arctic</span><span class="o">::</span><span class="no">Core</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span> <span class="n">email</span><span class="p">,</span> <span class="n">password</span>
+</code></pre>
+<p>The <code>email</code> and <code>password</code> should be supplied by the user. The user should be associated with your account.</p>
 
-<p>The Arctic project account that you sign up for can have multiple users. Under the hood the SDK uses OAuth2 to exchange your personal email and password for a token to access your account.</p>
+<p>You can setup, create and manage users for your account in your <a href="https://arctic.com/backoffice">Arctic Backoffice</a>.</p>
 
-<p>The <code>client_id</code> and the <code>client_secret</code> should be stored inside your application. The <code>email</code> and <code>password</code> should be supplied by the user of your application.</p>
-
-<aside class="notice">For the rest of the documentation it's assumes that we're working with an authenticated API instance object.</aside>
-<h1 id='account'>Account</h1><h2 id='get-the-user-39-s-account'>Get the user&#39;s account</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">account</span>
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
-<span class="nv">$api</span><span class="o">-&gt;</span><span class="na">account</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
+<aside class="notice">For the rest of the documentation it's assumes that you have sucessfully completed the Configuration and Authentication steps.</aside>
+<h1 id='account'>Account</h1><h2 id='get-account-information'>Get account information</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_account</span>
 </code></pre>
 <blockquote>
 <p>Example response</p>
@@ -311,10 +315,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>The user&#39;s account represents the account object. This is the central object that all users and shops are related to. This also holds your rate limit information (see the Rate Limiting section).</p>
-<h2 id='update-the-user-39-s-account'>Update the user&#39;s account</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">accountUpdate</span> <span class="ss">name: </span><span class="s1">'New Account Name'</span>
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
-<span class="nv">$api</span><span class="o">-&gt;</span><span class="na">accountUpdate</span><span class="p">({</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'New Account Name'</span> <span class="p">});</span>
-<span class="cp">?&gt;</span>
+<h2 id='update-account-information'>Update account information</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">update_account</span> <span class="ss">name: </span><span class="s1">'New Account Name'</span>
 </code></pre>
 <blockquote>
 <p>Example response</p>
@@ -342,12 +343,7 @@
 <td>The human readable name of your account</td>
 </tr>
 </tbody></table>
-<h1 id='shops'>Shops</h1><h2 id='list-your-shops'>List your shops</h2>
-<p>This will return a list of the shops available on your account.</p>
-<pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">shops</span>
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?</span>
-<span class="nv">$api</span><span class="o">-&gt;</span><span class="na">shops</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
+<h1 id='shops'>Shops</h1><h2 id='list-shops'>List shops</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_shops</span>
 </code></pre>
 <blockquote>
 <p>Example response</p>
@@ -362,7 +358,56 @@
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swedish shop"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h1 id='errors'>Errors</h1>
+</span></code></pre>
+<p>This will return a list of the shops available on your account.</p>
+<h2 id='update-an-existing-shop-39-s-information'>Update an existing shop&#39;s information</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">update_shops</span> <span class="ss">id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span> <span class="ss">name: </span><span class="s1">'Norwegian shop'</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a30c348a-0396-4c86-8aee-3af3c782862c"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norwegian shop"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Possible shop attributes to update</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>The human readable identifier of the shop on the Arctic platform</td>
+</tr>
+<tr>
+<td>preprocessors</td>
+<td>Array</td>
+<td>A list of preprocessor IDs to use for your shop</td>
+</tr>
+</tbody></table>
+<h1 id='preprocessors'>Preprocessors</h1><h2 id='list-available-preprocessors'>List available preprocessors</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_preprocessors</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8680cc9b-12d5-4bbd-a4ff-f176ef90d676"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dandomain"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"062da138-c0c1-46b2-b0fd-b43f9a2ad888"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon UK"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>A preprocessor represents a connection between where you&#39;re hosting your webshop (e.g. Dandomain) and our system. A preprocessor will pull the items from your system into the Arctic system, from where they will be distributed throug Postprocessors.</p>
+<h1 id='errors'>Errors</h1>
 <blockquote>
 <p>Example error response</p>
 </blockquote>
@@ -393,7 +438,6 @@
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="php">php</a>
           </div>
       </div>
     </div>
