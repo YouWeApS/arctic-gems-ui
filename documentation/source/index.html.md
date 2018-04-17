@@ -21,7 +21,9 @@ This SDK gives you a programmable way to interact with the UI API. You can also 
 
 # Installation
 
-To install the gem: `gem 'arctic-ui'`
+```ruby
+gem 'arctic-ui'
+```
 
 # Configuration
 
