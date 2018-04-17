@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "arctic/ui/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "arctic-core"
+  spec.name          = "arctic-ui"
   spec.version       = Arctic::UI::VERSION
   spec.authors       = ["Emil Kampp"]
   spec.email         = ["emil@kampp.me"]

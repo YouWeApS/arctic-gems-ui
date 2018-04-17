@@ -19,6 +19,10 @@ The Arctic UI API are the available endpoints for building UI applications to vi
 
 This SDK gives you a programmable way to interact with the UI API. You can also explore the API in a more interactive and direct way via our [Swagger documentation](https://arctic-core.herokuapp.com).
 
+# Installation
+
+To install the gem: `gem 'arctic-ui'`
+
 # Configuration
 
 ```ruby

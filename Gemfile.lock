@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    arctic-core (0.0.1)
+    arctic-ui (0.1.0)
       activesupport (~> 5.1)
       faraday (< 0.13)
       faraday-detailed_logger
@@ -86,7 +86,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  arctic-core!
+  arctic-ui!
   bundler (~> 1.16)
   pry
   rake (~> 10.0)
