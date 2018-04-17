@@ -14,12 +14,8 @@ Gem::Specification.new do |spec|
     This is a wrapper for http interactions with the Arctic e-shop core API,
     allowing to easily send the arctic api compatible json to the core API.
   STR
-  spec.homepage      = "https://github.com/YouWeApS/arctic-gems-core-api"
+  spec.homepage      = "https://youweaps.github.io/arctic-gems-ui"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -31,15 +27,15 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "webmock"
-  spec.add_development_dependency "vcr"
-  spec.add_development_dependency "pry"
+  spec.add_development_dependency "webmock", '~> 3.3'
+  spec.add_development_dependency "vcr", '~> 4.0'
+  spec.add_development_dependency "pry", '~> 0.11'
 
   spec.add_runtime_dependency 'activesupport', '~> 5.1'
   spec.add_runtime_dependency 'faraday', '< 0.13'
   spec.add_runtime_dependency 'faraday_middleware-parse_oj', '~> 0.3.2'
-  spec.add_runtime_dependency 'faraday_middleware'
-  spec.add_runtime_dependency 'faraday-detailed_logger'
+  spec.add_runtime_dependency 'faraday_middleware', '~> 0.12'
+  spec.add_runtime_dependency 'faraday-detailed_logger', '~> 2.1'
   spec.add_runtime_dependency 'oauth2', '~> 1.4'
-  spec.add_runtime_dependency 'faraday-http-cache'
+  spec.add_runtime_dependency 'faraday-http-cache', '~> 2.0'
 end

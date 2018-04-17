@@ -4,9 +4,9 @@ PATH
     arctic-ui (0.1.0)
       activesupport (~> 5.1)
       faraday (< 0.13)
-      faraday-detailed_logger
-      faraday-http-cache
-      faraday_middleware
+      faraday-detailed_logger (~> 2.1)
+      faraday-http-cache (~> 2.0)
+      faraday_middleware (~> 0.12)
       faraday_middleware-parse_oj (~> 0.3.2)
       oauth2 (~> 1.4)
 
@@ -88,11 +88,11 @@ PLATFORMS
 DEPENDENCIES
   arctic-ui!
   bundler (~> 1.16)
-  pry
+  pry (~> 0.11)
   rake (~> 10.0)
   rspec (~> 3.0)
-  vcr
-  webmock
+  vcr (~> 4.0)
+  webmock (~> 3.3)
 
 BUNDLED WITH
    1.16.1
