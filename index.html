@@ -222,6 +222,9 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
+            <a href="#installation" class="toc-h1 toc-link" data-title="installation">Installation</a>
+          </li>
+          <li>
             <a href="#configuration" class="toc-h1 toc-link" data-title="configuration">Configuration</a>
           </li>
           <li>
@@ -272,7 +275,8 @@
 <p>The Arctic UI API are the available endpoints for building UI applications to view and interact with the Arctic project core.</p>
 
 <p>This SDK gives you a programmable way to interact with the UI API. You can also explore the API in a more interactive and direct way via our <a href="https://arctic-core.herokuapp.com">Swagger documentation</a>.</p>
-<h1 id='configuration'>Configuration</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'arctic/ui'</span>
+<h1 id='installation'>Installation</h1><pre class="highlight ruby tab-ruby"><code><span class="n">gem</span> <span class="s1">'arctic-ui'</span>
+</code></pre><h1 id='configuration'>Configuration</h1><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'arctic/ui'</span>
 
 <span class="no">Arctic</span><span class="o">::</span><span class="no">UI</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="p">.</span><span class="nf">client_id</span> <span class="o">=</span> <span class="s2">"CLIENT_ID"</span>
