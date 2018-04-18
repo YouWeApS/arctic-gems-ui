@@ -250,6 +250,15 @@
                   <li>
                     <a href="#update-an-existing-shop-39-s-information" class="toc-h2 toc-link" data-title="update-an-existing-shop-s-information">Update an existing shop's information</a>
                   </li>
+                  <li>
+                    <a href="#list-configured-preprocessors" class="toc-h2 toc-link" data-title="list-configured-preprocessors">List configured preprocessors</a>
+                  </li>
+                  <li>
+                    <a href="#add-a-preprocessor" class="toc-h2 toc-link" data-title="add-a-preprocessor">Add a preprocessor</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-preprocessor" class="toc-h2 toc-link" data-title="update-a-preprocessor">Update a preprocessor</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -362,7 +371,9 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This will return a list of the shops available on your account.</p>
-<h2 id='update-an-existing-shop-39-s-information'>Update an existing shop&#39;s information</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">update_shops</span> <span class="ss">id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span> <span class="ss">name: </span><span class="s1">'Norwegian shop'</span>
+<h2 id='update-an-existing-shop-39-s-information'>Update an existing shop&#39;s information</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">update_shops</span> <span class="p">\</span>
+  <span class="ss">id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span>
+  <span class="ss">name: </span><span class="s1">'Norwegian shop'</span>
 </code></pre>
 <blockquote>
 <p>Example response</p>
@@ -386,12 +397,89 @@
 <td>String</td>
 <td>The human readable identifier of the shop on the Arctic platform</td>
 </tr>
-<tr>
-<td>preprocessors</td>
-<td>Array</td>
-<td>A list of preprocessor IDs to use for your shop</td>
-</tr>
 </tbody></table>
+<h2 id='list-configured-preprocessors'>List configured preprocessors</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_shop_preprocessors</span> <span class="p">\</span>
+  <span class="ss">shop_id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span>
+  <span class="ss">preprocessor_id: </span><span class="s1">'8680cc9b-12d5-4bbd-a4ff-f176ef90d676'</span>
+  <span class="ss">config: </span><span class="p">{</span>
+    <span class="ss">username: </span><span class="s1">'some@email.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
+  <span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a30c348a-0396-4c86-8aee-3af3c782862c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon UK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"062da138-c0c1-46b2-b0fd-b43f9a2ad888"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8c4e6d26-4b4d-40c8-88b5-ad814294ce39"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alibaba"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c4cc916b-441f-4244-9ce3-c0cc81a5cc44"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>You can retrieve a list of all the preprocessors configures on the shop.</p>
+<h2 id='add-a-preprocessor'>Add a preprocessor</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">add_shop_preprocessor</span> <span class="p">\</span>
+  <span class="ss">shop_id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span>
+  <span class="ss">preprocessor_id: </span><span class="s1">'8680cc9b-12d5-4bbd-a4ff-f176ef90d676'</span>
+  <span class="ss">config: </span><span class="p">{</span>
+    <span class="ss">username: </span><span class="s1">'some@email.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
+  <span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0062fe4-f378-4179-99ab-f5b0b388df85"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dandomain"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8680cc9b-12d5-4bbd-a4ff-f176ef90d676"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>In order to distribute products from your shop to other platforms you must add a
+preprocessor. Here you will need to set credentials and/or other information
+that will allow us to access your webshop or ERP system and retrieve your
+products.</p>
+<h2 id='update-a-preprocessor'>Update a preprocessor</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">update_shop_preprocessor</span> <span class="p">\</span>
+  <span class="ss">id: </span><span class="s1">'d0062fe4-f378-4179-99ab-f5b0b388df85'</span>
+  <span class="ss">shop_id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span>
+  <span class="ss">config: </span><span class="p">{</span>
+    <span class="ss">username: </span><span class="s1">'new@email.com'</span><span class="p">,</span>
+    <span class="ss">password: </span><span class="s1">'new-password'</span><span class="p">,</span>
+  <span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0062fe4-f378-4179-99ab-f5b0b388df85"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dandomain"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8680cc9b-12d5-4bbd-a4ff-f176ef90d676"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-password"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>If the credentials for the webshop system changes, then you will need to update
+the preprocessor configurations as well with the new credentials and/or other
+configurations.</p>
 <h1 id='preprocessors'>Preprocessors</h1><h2 id='list-available-preprocessors'>List available preprocessors</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_preprocessors</span>
 </code></pre>
 <blockquote>
@@ -406,6 +494,10 @@
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"062da138-c0c1-46b2-b0fd-b43f9a2ad888"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon UK"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c4cc916b-441f-4244-9ce3-c0cc81a5cc44"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alibaba"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>A preprocessor represents a connection between where you&#39;re hosting your webshop (e.g. Dandomain) and our system. A preprocessor will pull the items from your system into the Arctic system, from where they will be distributed throug Postprocessors.</p>
