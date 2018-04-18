@@ -33,8 +33,24 @@ module Arctic
         connection.headers['ClientId'] = Arctic::UI.configuration.client_id
       end
 
+      def add_shop_preprocessor(shop_id:, **options)
+        response = connection.post "ui/shops/#{shop_id}/preprocessors/configurations", options
+        response.body
+      end
+
+      def update_shop_preprocessor(shop_id:, id:, **options)
+        response = connection.patch "ui/shops/#{shop_id}/preprocessors/configurations/#{id}", options
+        response.body
+      end
+
+      def get_shop_preprocessors(shop_id:)
+        response = connection.get "ui/shops/#{shop_id}/preprocessors/configurations"
+        response.body
+      end
+
       def method_missing(name, *args)
         method = name.to_s.gsub /(get|update|create)_/, 'ui/'
+        method = method.gsub /\_/, '/'
 
         response = case name.to_s.downcase
           when /get_/ then connection.get method, *args

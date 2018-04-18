@@ -4,10 +4,10 @@ module Arctic
       attr_accessor :client_id, :client_secret, :url, :scope, :cache
 
       def initialize
-        self.client_id ||= '2e088d752d61c023fbc91ca6c585a978a030187c4a18fbfb34ea39d78ef3c6a2'
-        self.client_secret ||= '3675b0433b39d93eff54921e45c948c42ed13df8425d9f686a038de7685d30e0'
+        self.client_id ||= 'f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067'
+        self.client_secret ||= 'a049351f24fb10e0534e3602b11aa073bf8ab5ed05552bbee040956abeda3c5d'
         self.url ||= 'http://localhost:5000/v1'
-        self.scope ||= 'ui account:read account:update shops:read'
+        self.scope ||= 'ui account:read account:update shops:read shops:create'
       end
     end
 

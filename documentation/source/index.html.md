@@ -13,6 +13,15 @@ includes:
 search: true
 ---
 
+
+
+
+
+
+
+
+
+
 # Introduction
 
 The Arctic UI API are the available endpoints for building UI applications to view and interact with the Arctic project core.
@@ -24,6 +33,14 @@ This SDK gives you a programmable way to interact with the UI API. You can also 
 ```ruby
 gem 'arctic-ui'
 ```
+
+
+
+
+
+
+
+
 
 # Configuration
 
@@ -44,6 +61,15 @@ The `CLIENT_ID` and the `CLIENT_SECRET` should be stored inside your application
 
 To get a set of credentials, please <a href="mailto:info@youwe.dk">get in touch</a> with us.
 
+
+
+
+
+
+
+
+
+
 # Authentication
 
 ```ruby
@@ -57,6 +83,16 @@ The `email` and `password` should be supplied by the user. The user should be as
 You can setup, create and manage users for your account in your [Arctic Backoffice](https://arctic.com/backoffice).
 
 <aside class="notice">For the rest of the documentation it's assumes that you have sucessfully completed the Configuration and Authentication steps.</aside>
+
+
+
+
+
+
+
+
+
+
 
 # Account
 
@@ -108,6 +144,18 @@ Attribute | Description
 --------- | -----------
 name | The human readable name of your account
 
+
+
+
+
+
+
+
+
+
+
+
+
 # Shops
 
 ## List shops
@@ -136,7 +184,9 @@ This will return a list of the shops available on your account.
 ## Update an existing shop's information
 
 ```ruby
-api.update_shops id: 'a30c348a-0396-4c86-8aee-3af3c782862c', name: 'Norwegian shop'
+api.update_shops \
+  id: 'a30c348a-0396-4c86-8aee-3af3c782862c',
+  name: 'Norwegian shop'
 ```
 
 > Example response
@@ -153,7 +203,117 @@ Possible shop attributes to update
 Attribute | Type | Description
 --------- | ---- | -----------
 name | String | The human readable identifier of the shop on the Arctic platform
-preprocessors | Array | A list of preprocessor IDs to use for your shop
+
+## List configured preprocessors
+
+```ruby
+api.get_shop_preprocessors \
+  shop_id: 'a30c348a-0396-4c86-8aee-3af3c782862c',
+  preprocessor_id: '8680cc9b-12d5-4bbd-a4ff-f176ef90d676'
+  config: {
+    username: 'some@email.com',
+    password: 'password',
+  }
+```
+
+> Example response
+
+```json
+[
+  {
+    "id": "a30c348a-0396-4c86-8aee-3af3c782862c",
+    "name": "Amazon UK",
+    "preprocessor_id": "062da138-c0c1-46b2-b0fd-b43f9a2ad888",
+    "config": {
+      "username": "some@email.com",
+      "password": "password"
+    }
+  },
+  {
+    "id": "8c4e6d26-4b4d-40c8-88b5-ad814294ce39",
+    "name": "Alibaba",
+    "preprocessor_id": "c4cc916b-441f-4244-9ce3-c0cc81a5cc44",
+    "config": {
+      "username": "some@email.com",
+      "password": "password"
+    }
+  }
+]
+```
+
+You can retrieve a list of all the preprocessors configures on the shop.
+
+## Add a preprocessor
+
+```ruby
+api.add_shop_preprocessor \
+  shop_id: 'a30c348a-0396-4c86-8aee-3af3c782862c',
+  preprocessor_id: '8680cc9b-12d5-4bbd-a4ff-f176ef90d676'
+  config: {
+    username: 'some@email.com',
+    password: 'password',
+  }
+```
+
+> Example response
+
+```json
+{
+  "id": "d0062fe4-f378-4179-99ab-f5b0b388df85",
+  "name": "Dandomain",
+  "preprocessor_id": "8680cc9b-12d5-4bbd-a4ff-f176ef90d676",
+  "config": {
+    "username": "some@email.com",
+    "password": "password"
+  }
+}
+```
+
+In order to distribute products from your shop to other platforms you must add a
+preprocessor. Here you will need to set credentials and/or other information
+that will allow us to access your webshop or ERP system and retrieve your
+products.
+
+## Update a preprocessor
+
+```ruby
+api.update_shop_preprocessor \
+  id: 'd0062fe4-f378-4179-99ab-f5b0b388df85'
+  shop_id: 'a30c348a-0396-4c86-8aee-3af3c782862c',
+  config: {
+    username: 'new@email.com',
+    password: 'new-password',
+  }
+```
+
+> Example response
+
+```json
+{
+  "id": "d0062fe4-f378-4179-99ab-f5b0b388df85",
+  "name": "Dandomain",
+  "preprocessor_id": "8680cc9b-12d5-4bbd-a4ff-f176ef90d676",
+  "config": {
+    "username": "new@email.com",
+    "password": "new-password"
+  }
+}
+```
+
+If the credentials for the webshop system changes, then you will need to update
+the preprocessor configurations as well with the new credentials and/or other
+configurations.
+
+
+
+
+
+
+
+
+
+
+
 
 # Preprocessors
 
@@ -175,6 +335,10 @@ api.get_preprocessors
     "id": "062da138-c0c1-46b2-b0fd-b43f9a2ad888",
     "name": "Amazon UK"
   },
+  {
+    "id": "c4cc916b-441f-4244-9ce3-c0cc81a5cc44",
+    "name": "Alibaba"
+  }
 ]
 ```
 

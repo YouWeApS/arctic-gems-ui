@@ -27,24 +27,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a0ab38609b7d4c6af5d4058153a60c35"
+      - W/"de8d1b4c03241e5d537efcb4241bcfbe"
       X-Request-Id:
-      - ec04f4e5-5194-4329-923a-1bfa2955228f
+      - 4d59b70e-d659-464f-9b7f-5bbb913ef8a8
       X-Runtime:
-      - '0.066546'
+      - '0.064013'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"access_token":"6f6b2c55902423cf07839d3c9849bc4de2f6b4702987db0d73387bdc165e8c68","token_type":"bearer","expires_in":7200,"refresh_token":"a609aa7f5ebe7cdf657a9c12b461b612f79bfc12e69b8a01106751e04028a320","scope":"ui
-        account:read account:update shops:read","created_at":1524036994}'
+      string: '{"access_token":"e4502ac58c89c16bb491fe6666ef0f332be681b0673ff9d043093af540212b25","token_type":"bearer","expires_in":7200,"refresh_token":"fb177f180416fd2603b98f3b7780b8d3ad9980969ffaf34b7b5a834597806652","scope":"ui
+        account:read account:update shops:read","created_at":1524038336}'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 07:36:34 GMT
+  recorded_at: Wed, 18 Apr 2018 07:58:56 GMT
 - request:
     method: get
-    uri: http://localhost:5000/v1/ui/account
+    uri: http://localhost:5000/v1/ui/preprocessors
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
       Clientid:
       - f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067
       Authorization:
-      - Bearer 6f6b2c55902423cf07839d3c9849bc4de2f6b4702987db0d73387bdc165e8c68
+      - Bearer e4502ac58c89c16bb491fe6666ef0f332be681b0673ff9d043093af540212b25
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -65,24 +65,24 @@ http_interactions:
       message: OK
     headers:
       Etag:
-      - W/"4e06c705e97797dcc1e652d9512de477"
+      - W/"57dd8c1da7e38f6ac41499f88b2aa838"
       Last-Modified:
-      - Wed, 18 Apr 2018 07:36:09 GMT
+      - Wed, 18 Apr 2018 07:36:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1401ba58-72d2-4368-93fa-2217f4a4be6a
+      - e4fa4677-667a-4369-8ecd-b9ae1754230c
       X-Runtime:
-      - '0.035232'
+      - '0.068470'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":"10a6e55e-a89f-44b9-a394-62d463e4ef72","name":"EShoes","throttling":{"interval":1,"amount":100,"current":98}}'
+      string: '[{"id":"ae7a8526-e79c-4d28-8350-e88918e02c72","name":"dandomain"}]'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 07:36:34 GMT
+  recorded_at: Wed, 18 Apr 2018 07:58:56 GMT
 recorded_with: VCR 4.0.0

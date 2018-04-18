@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:5000/v1/oauth/token
     body:
       encoding: UTF-8
-      string: client_id=f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067&client_secret=a049351f24fb10e0534e3602b11aa073bf8ab5ed05552bbee040956abeda3c5d&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread&username=eshoes%40email.com
+      string: client_id=f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067&client_secret=a049351f24fb10e0534e3602b11aa073bf8ab5ed05552bbee040956abeda3c5d&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread+shops%3Acreate&username=eshoes%40email.com
     headers:
       User-Agent:
       - Faraday v0.12.2
@@ -27,34 +27,34 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8c50a712fbff374678fd66a3c7b4555b"
+      - W/"019116f1e1131ce7b18f494aead54032"
       X-Request-Id:
-      - 9cd0ab92-b1aa-4842-afce-d463adcbac18
+      - 8b66c096-08eb-47df-bb3d-46472566e7d0
       X-Runtime:
-      - '0.063871'
+      - '0.067391'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"access_token":"e888f91f61e33e921864e502927ab71294436737191479f8e75ce47e7a445e82","token_type":"bearer","expires_in":7200,"refresh_token":"8261396207c5bf6aba758311f729c3d3e8abb2f08257250d37e60e0440f3d405","scope":"ui
-        account:read account:update shops:read","created_at":1524037003}'
+      string: '{"access_token":"fbb7404456e3ace6361b15fa4c2178a3a38679eac267ea3854c270e5eafc14a7","token_type":"bearer","expires_in":7200,"refresh_token":"19515f17d04f89cbb3db92785fd35fe4059991f3b19286ccc9717da914130214","scope":"ui
+        account:read account:update shops:read shops:create","created_at":1524041382}'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 07:36:43 GMT
+  recorded_at: Wed, 18 Apr 2018 08:49:42 GMT
 - request:
-    method: patch
-    uri: http://localhost:5000/v1/ui/account
+    method: post
+    uri: http://localhost:5000/v1/ui/shops/8e25477b-8cb3-4707-a304-599097ee5aa2/preprocessors/configurations
     body:
       encoding: UTF-8
-      string: '{"name":"New Account Name"}'
+      string: '{"preprocessor_id":"ae7a8526-e79c-4d28-8350-e88918e02c72","config":{"a":"b"}}'
     headers:
       User-Agent:
       - Faraday v0.12.2
       Clientid:
       - f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067
       Authorization:
-      - Bearer e888f91f61e33e921864e502927ab71294436737191479f8e75ce47e7a445e82
+      - Bearer fbb7404456e3ace6361b15fa4c2178a3a38679eac267ea3854c270e5eafc14a7
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -69,20 +69,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"d92ebbb85d455751b4ad4126d752b47d"
+      - W/"3497ac3f8901d21abe5f2c8cc9a155bc"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ee245882-f980-435a-b464-474b199b1c81
+      - 8c3804c2-6329-4b15-ab90-7bf44aa6cc85
       X-Runtime:
-      - '0.037157'
+      - '0.052538'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":"10a6e55e-a89f-44b9-a394-62d463e4ef72","name":"New Account Name","throttling":{"interval":1,"amount":100,"current":73}}'
+      string: '{"id":"7e0aca5f-3262-4ebe-9055-6617a44f2682","name":"dandomain","config":{"a":"b"},"preprocessor_id":"ae7a8526-e79c-4d28-8350-e88918e02c72"}'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 07:36:43 GMT
+  recorded_at: Wed, 18 Apr 2018 08:49:42 GMT
 recorded_with: VCR 4.0.0

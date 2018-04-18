@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:5000/v1/oauth/token
     body:
       encoding: UTF-8
-      string: client_id=2e088d752d61c023fbc91ca6c585a978a030187c4a18fbfb34ea39d78ef3c6a2&client_secret=3675b0433b39d93eff54921e45c948c42ed13df8425d9f686a038de7685d30e0&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread&username=eshoes%40email.com
+      string: client_id=f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067&client_secret=a049351f24fb10e0534e3602b11aa073bf8ab5ed05552bbee040956abeda3c5d&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread&username=eshoes%40email.com
     headers:
       User-Agent:
       - Faraday v0.12.2
@@ -27,21 +27,21 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"bf218efba31d31e0ccd5c33d8fae987a"
+      - W/"eee57fffac70ecdcbca9837fd2c6846d"
       X-Request-Id:
-      - 65bd63a9-d64c-46ad-a0f8-cb4006df3cbc
+      - f49ba62d-55aa-427c-bbcd-e3dd30fa5a12
       X-Runtime:
-      - '0.094336'
+      - '0.062707'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"access_token":"12b7588d573b8e4b91c26c356e3fac281ac5319d4e260176439741ca96b66e08","token_type":"bearer","expires_in":7200,"refresh_token":"0eea626eb12f7891f3e55e81a5247b0f8ac9be0499952035a5ef1bcc241969f0","scope":"ui
-        account:read account:update shops:read","created_at":1523886151}'
+      string: '{"access_token":"ed2c837d18d465ebb79c04fa54b779f0c95ad6a99ae5268edea98e8ed67fe173","token_type":"bearer","expires_in":7200,"refresh_token":"2ec6641db1c15ac4732fb1291ba27d69961a75a841d79fb56f4134de5234cbdd","scope":"ui
+        account:read account:update shops:read","created_at":1524036991}'
     http_version: 
-  recorded_at: Mon, 16 Apr 2018 13:42:31 GMT
+  recorded_at: Wed, 18 Apr 2018 07:36:31 GMT
 - request:
     method: get
     uri: http://localhost:5000/v1/ui/shops
@@ -52,9 +52,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Clientid:
-      - 2e088d752d61c023fbc91ca6c585a978a030187c4a18fbfb34ea39d78ef3c6a2
+      - f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067
       Authorization:
-      - Bearer 12b7588d573b8e4b91c26c356e3fac281ac5319d4e260176439741ca96b66e08
+      - Bearer ed2c837d18d465ebb79c04fa54b779f0c95ad6a99ae5268edea98e8ed67fe173
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -65,17 +65,17 @@ http_interactions:
       message: OK
     headers:
       Etag:
-      - W/"2b59dfb463902e53ffab9f1d2138350d"
+      - W/"7fe21ace33e63a1272e87b06115749c0"
       Last-Modified:
-      - Mon, 16 Apr 2018 08:44:51 GMT
+      - Wed, 18 Apr 2018 07:36:09 GMT
       Content-Type:
       - application/json; charset=utf-8
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ce8477ea-13c4-42c3-969b-f3ccd500f5ac
+      - 41132ce1-a4ed-4f89-9df5-a9f06d2802d1
       X-Runtime:
-      - '0.174065'
+      - '0.047428'
       Vary:
       - Origin
       Transfer-Encoding:
@@ -84,5 +84,5 @@ http_interactions:
       encoding: UTF-8
       string: '[{"id":"8e25477b-8cb3-4707-a304-599097ee5aa2","name":"DK shop"}]'
     http_version: 
-  recorded_at: Mon, 16 Apr 2018 13:42:31 GMT
+  recorded_at: Wed, 18 Apr 2018 07:36:31 GMT
 recorded_with: VCR 4.0.0

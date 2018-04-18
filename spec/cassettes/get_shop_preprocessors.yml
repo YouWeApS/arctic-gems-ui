@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:5000/v1/oauth/token
     body:
       encoding: UTF-8
-      string: client_id=f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067&client_secret=a049351f24fb10e0534e3602b11aa073bf8ab5ed05552bbee040956abeda3c5d&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread&username=eshoes%40email.com
+      string: client_id=f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067&client_secret=a049351f24fb10e0534e3602b11aa073bf8ab5ed05552bbee040956abeda3c5d&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread+shops%3Acreate&username=eshoes%40email.com
     headers:
       User-Agent:
       - Faraday v0.12.2
@@ -27,24 +27,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a0ab38609b7d4c6af5d4058153a60c35"
+      - W/"e0fc761c5490add7e23ecad9c7fc424e"
       X-Request-Id:
-      - ec04f4e5-5194-4329-923a-1bfa2955228f
+      - 673e1b05-60e2-4027-bdbb-ee237706fd1e
       X-Runtime:
-      - '0.066546'
+      - '0.064733'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"access_token":"6f6b2c55902423cf07839d3c9849bc4de2f6b4702987db0d73387bdc165e8c68","token_type":"bearer","expires_in":7200,"refresh_token":"a609aa7f5ebe7cdf657a9c12b461b612f79bfc12e69b8a01106751e04028a320","scope":"ui
-        account:read account:update shops:read","created_at":1524036994}'
+      string: '{"access_token":"ae67b91e61b89bb209aca17ee0cd3dcdde3d2ac8655cf1ac1e4044d7209e6fa7","token_type":"bearer","expires_in":7200,"refresh_token":"29b95367e9106ae9a16aebacf35f96609c0bb38893064e9e126b647aa94393f8","scope":"ui
+        account:read account:update shops:read shops:create","created_at":1524042184}'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 07:36:34 GMT
+  recorded_at: Wed, 18 Apr 2018 09:03:04 GMT
 - request:
     method: get
-    uri: http://localhost:5000/v1/ui/account
+    uri: http://localhost:5000/v1/ui/shops/8e25477b-8cb3-4707-a304-599097ee5aa2/preprocessors/configurations
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
       Clientid:
       - f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067
       Authorization:
-      - Bearer 6f6b2c55902423cf07839d3c9849bc4de2f6b4702987db0d73387bdc165e8c68
+      - Bearer ae67b91e61b89bb209aca17ee0cd3dcdde3d2ac8655cf1ac1e4044d7209e6fa7
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -65,24 +65,24 @@ http_interactions:
       message: OK
     headers:
       Etag:
-      - W/"4e06c705e97797dcc1e652d9512de477"
+      - W/"c43476920ef852ca2b6a20a6b96a3e2c"
       Last-Modified:
-      - Wed, 18 Apr 2018 07:36:09 GMT
+      - Wed, 18 Apr 2018 09:02:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1401ba58-72d2-4368-93fa-2217f4a4be6a
+      - 6a69d667-9ed3-46fa-89bb-d498dff85b3a
       X-Runtime:
-      - '0.035232'
+      - '0.128058'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":"10a6e55e-a89f-44b9-a394-62d463e4ef72","name":"EShoes","throttling":{"interval":1,"amount":100,"current":98}}'
+      string: '[{"id":"e542a79d-f82b-46d4-9d92-ea43c657b695","name":"dandomain","config":{"user":"youwe","password":"Youweloveslife","prices_file_id":126,"products_file_id":127},"preprocessor_id":"b5f4d7e7-255e-480e-8b57-70713915b6cf"}]'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 07:36:34 GMT
+  recorded_at: Wed, 18 Apr 2018 09:03:04 GMT
 recorded_with: VCR 4.0.0

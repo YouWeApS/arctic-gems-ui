@@ -1,0 +1,131 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5000/v1/oauth/token
+    body:
+      encoding: UTF-8
+      string: client_id=f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067&client_secret=a049351f24fb10e0534e3602b11aa073bf8ab5ed05552bbee040956abeda3c5d&grant_type=password&password=password&scope=ui+account%3Aread+account%3Aupdate+shops%3Aread+shops%3Acreate&username=eshoes%40email.com
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"796238dfa65b123efcdc2dda401a53ae"
+      X-Request-Id:
+      - 843fb30b-b912-43d6-a4b7-24d89ffc8798
+      X-Runtime:
+      - '0.112556'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"612c0c458498e9ab916f2f0b85344feb1d1c1aa163ecca465a58dee4894b2bd7","token_type":"bearer","expires_in":7200,"refresh_token":"3fafa51425a019bc5dcc734e05f322d7d2fd3dfa2aa80996613c911f2c04469f","scope":"ui
+        account:read account:update shops:read shops:create","created_at":1524041042}'
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 08:44:02 GMT
+- request:
+    method: post
+    uri: http://localhost:5000/v1/ui/shops/8e25477b-8cb3-4707-a304-599097ee5aa2/preprocessors/configurations
+    body:
+      encoding: UTF-8
+      string: '{"preprocessor_id":"ae7a8526-e79c-4d28-8350-e88918e02c72","config":{"a":"b"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Clientid:
+      - f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067
+      Authorization:
+      - Bearer 612c0c458498e9ab916f2f0b85344feb1d1c1aa163ecca465a58dee4894b2bd7
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"d6a3e8e2bb00643da804905116751078"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b9db7c36-fe65-4c7b-96fc-91c6038431df
+      X-Runtime:
+      - '0.126669'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"67e49991-2961-4c72-9821-e26889959ce2","name":"dandomain","config":{"a":"b"},"preprocessor_id":"ae7a8526-e79c-4d28-8350-e88918e02c72"}'
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 08:44:02 GMT
+- request:
+    method: patch
+    uri: http://localhost:5000/v1/ui/shops/8e25477b-8cb3-4707-a304-599097ee5aa2/preprocessors/configurations/67e49991-2961-4c72-9821-e26889959ce2
+    body:
+      encoding: UTF-8
+      string: '{"config":{"c":"d"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Clientid:
+      - f39374d3899c393fb9362b07587b9a4ba3c50c534325ed15b8d0d86f146b2067
+      Authorization:
+      - Bearer 612c0c458498e9ab916f2f0b85344feb1d1c1aa163ecca465a58dee4894b2bd7
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"be1426a8a076046f962a36ca20ae52fb"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b49101c9-6716-417f-8861-c8e835a414ea
+      X-Runtime:
+      - '0.062843'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"67e49991-2961-4c72-9821-e26889959ce2","name":"dandomain","config":{"c":"d"},"preprocessor_id":"ae7a8526-e79c-4d28-8350-e88918e02c72"}'
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 08:44:03 GMT
+recorded_with: VCR 4.0.0
