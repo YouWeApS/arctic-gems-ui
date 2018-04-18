@@ -3,6 +3,7 @@
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
 version: 2
+
 jobs:
   build:
     docker:
@@ -13,6 +14,8 @@ jobs:
 
     steps:
       - checkout
+
+      - run: git submodule sync
 
       # Download and cache dependencies
       - restore_cache:
