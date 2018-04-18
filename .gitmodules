@@ -1,0 +1,3 @@
+[submodule "arctic-documentation-template"]
+	path = arctic-documentation-template
+	url = git@github.com:YouWeApS/arctic-documentation-template.git
