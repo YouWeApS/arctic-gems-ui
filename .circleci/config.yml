@@ -15,8 +15,6 @@ jobs:
     steps:
       - checkout
 
-      - run: git submodule sync
-
       # Download and cache dependencies
       - restore_cache:
           keys:
