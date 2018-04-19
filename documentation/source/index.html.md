@@ -92,6 +92,43 @@ You can setup, create and manage users for your account in your [Arctic Backoffi
 
 
 
+# Throttling / Rate limiting
+
+```ruby
+api.get_throttling
+```
+
+> Example response
+
+```json
+{
+  "credits": 67,
+  "total": 100,
+  "timeout": "Wed, 21 Oct 2015 07:28:00 GMT",
+}
+```
+
+Every endpoint has a cost to prevent abuse. Every account has a number of
+rate-credits, and the cost of the endpoint is deducted everytime an endpoint is
+called. The credits are regenerated at a pre-configured rate.
+
+**Response fields**
+
+Name | Description
+---- | -----------
+credits | The number of credits left
+total | The number of credits after regeneration
+timeout | The seconds the client needs to wait after being ratelimited
+
+Every endpoint documents the `cost` of using the endpoint.
+
+
+
+
+
+
+
+
 
 
 # Account
@@ -107,14 +144,11 @@ api.get_account
 ```json
 {
   "id": "735108ed-55ef-4314-8295-b57fb0d1e05c",
-  "name": "Bob's webshop",
-  "throttling": {
-    "interval": 1,
-    "amount": 100,
-    "current": 99
-  }
+  "name": "Bob's webshop"
 }
 ```
+
+Throttling cost: 1
 
 The user's account represents the account object. This is the central object that all users and shops are related to. This also holds your rate limit information (see the Rate Limiting section).
 
@@ -129,14 +163,11 @@ api.update_account name: 'New Account Name'
 ```json
 {
   "id": "735108ed-55ef-4314-8295-b57fb0d1e05c",
-  "name": "New Account Name",
-  "throttling": {
-    "interval": 1,
-    "amount": 100,
-    "current": 74
-  }
+  "name": "New Account Name"
 }
 ```
+
+Throttling cost: 25
 
 Possible account attributes you can update
 
