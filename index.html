@@ -231,6 +231,9 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
+            <a href="#throttling-rate-limiting" class="toc-h1 toc-link" data-title="throttling-rate-limiting">Throttling / Rate limiting</a>
+          </li>
+          <li>
             <a href="#account" class="toc-h1 toc-link" data-title="account">Account</a>
               <ul class="toc-list-h2">
                   <li>
@@ -310,6 +313,44 @@
 <p>You can setup, create and manage users for your account in your <a href="https://arctic.com/backoffice">Arctic Backoffice</a>.</p>
 
 <aside class="notice">For the rest of the documentation it's assumes that you have sucessfully completed the Configuration and Authentication steps.</aside>
+<h1 id='throttling-rate-limiting'>Throttling / Rate limiting</h1><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_throttling</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"credits"</span><span class="p">:</span><span class="w"> </span><span class="mi">67</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed, 21 Oct 2015 07:28:00 GMT"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Every endpoint has a cost to prevent abuse. Every account has a number of
+rate-credits, and the cost of the endpoint is deducted everytime an endpoint is
+called. The credits are regenerated at a pre-configured rate.</p>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>credits</td>
+<td>The number of credits left</td>
+</tr>
+<tr>
+<td>total</td>
+<td>The number of credits after regeneration</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>The seconds the client needs to wait after being ratelimited</td>
+</tr>
+</tbody></table>
+
+<p>Every endpoint documents the <code>cost</code> of using the endpoint.</p>
 <h1 id='account'>Account</h1><h2 id='get-account-information'>Get account information</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_account</span>
 </code></pre>
 <blockquote>
@@ -317,14 +358,11 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"735108ed-55ef-4314-8295-b57fb0d1e05c"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob's webshop"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"throttling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob's webshop"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>Throttling cost: 1</p>
+
 <p>The user&#39;s account represents the account object. This is the central object that all users and shops are related to. This also holds your rate limit information (see the Rate Limiting section).</p>
 <h2 id='update-account-information'>Update account information</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">update_account</span> <span class="ss">name: </span><span class="s1">'New Account Name'</span>
 </code></pre>
@@ -333,14 +371,11 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"735108ed-55ef-4314-8295-b57fb0d1e05c"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Account Name"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"throttling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Account Name"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>Throttling cost: 25</p>
+
 <p>Possible account attributes you can update</p>
 
 <table><thead>
