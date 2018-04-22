@@ -239,12 +239,7 @@ name | String | The human readable identifier of the shop on the Arctic platform
 
 ```ruby
 api.get_shop_preprocessors \
-  shop_id: 'a30c348a-0396-4c86-8aee-3af3c782862c',
-  preprocessor_id: '8680cc9b-12d5-4bbd-a4ff-f176ef90d676'
-  config: {
-    username: 'some@email.com',
-    password: 'password',
-  }
+  shop_id: 'a30c348a-0396-4c86-8aee-3af3c782862c'
 ```
 
 > Example response
@@ -255,18 +250,34 @@ api.get_shop_preprocessors \
     "id": "a30c348a-0396-4c86-8aee-3af3c782862c",
     "name": "Amazon UK",
     "preprocessor_id": "062da138-c0c1-46b2-b0fd-b43f9a2ad888",
-    "config": {
+    "auth_config": {
       "username": "some@email.com",
       "password": "password"
+    },
+    "format_config": {
+      "rename": {
+        "SOME_FIELD": "id"
+      }
+    },
+    "config": {
+      "url": "ecommerse.com/api"
     }
   },
   {
     "id": "8c4e6d26-4b4d-40c8-88b5-ad814294ce39",
     "name": "Alibaba",
     "preprocessor_id": "c4cc916b-441f-4244-9ce3-c0cc81a5cc44",
-    "config": {
+    "auth_config": {
       "username": "some@email.com",
       "password": "password"
+    },
+    "format_config": {
+      "rename": {
+        "SOME_FIELD": "id"
+      }
+    },
+    "config": {
+      "url": "ecommerse.com/api"
     }
   }
 ]
@@ -279,11 +290,24 @@ You can retrieve a list of all the preprocessors configures on the shop.
 ```ruby
 api.add_shop_preprocessor \
   shop_id: 'a30c348a-0396-4c86-8aee-3af3c782862c',
-  preprocessor_id: '8680cc9b-12d5-4bbd-a4ff-f176ef90d676'
+  preprocessor_id: '8680cc9b-12d5-4bbd-a4ff-f176ef90d676',
   config: {
+    url: 'https://e-commerse-system.com/api',
+  },
+  auth_config: {
     username: 'some@email.com',
     password: 'password',
-  }
+  },
+  format_config: {
+    rename: {
+      NAME: :name,
+      SIZE: :size,
+    },
+    aggregate: {
+      id: [:name, :size],
+    },
+    remove: [ :size ],
+  },
 ```
 
 > Example response
@@ -293,9 +317,19 @@ api.add_shop_preprocessor \
   "id": "d0062fe4-f378-4179-99ab-f5b0b388df85",
   "name": "Dandomain",
   "preprocessor_id": "8680cc9b-12d5-4bbd-a4ff-f176ef90d676",
-  "config": {
+  "auth_config": {
     "username": "some@email.com",
     "password": "password"
+  },
+  "format_config": {
+    "rename": {
+      "NAME": "name",
+      "SIZE": "size",
+    },
+    "aggregate": {
+      "id": ["name", "size"],
+    },
+    "remove": [ "size" ],
   }
 }
 ```
@@ -311,7 +345,7 @@ products.
 api.update_shop_preprocessor \
   id: 'd0062fe4-f378-4179-99ab-f5b0b388df85'
   shop_id: 'a30c348a-0396-4c86-8aee-3af3c782862c',
-  config: {
+  auth_config: {
     username: 'new@email.com',
     password: 'new-password',
   }
@@ -324,7 +358,7 @@ api.update_shop_preprocessor \
   "id": "d0062fe4-f378-4179-99ab-f5b0b388df85",
   "name": "Dandomain",
   "preprocessor_id": "8680cc9b-12d5-4bbd-a4ff-f176ef90d676",
-  "config": {
+  "auth_config": {
     "username": "new@email.com",
     "password": "new-password"
   }
