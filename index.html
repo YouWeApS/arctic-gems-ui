@@ -434,12 +434,7 @@ called. The credits are regenerated at a pre-configured rate.</p>
 </tr>
 </tbody></table>
 <h2 id='list-configured-preprocessors'>List configured preprocessors</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">get_shop_preprocessors</span> <span class="p">\</span>
-  <span class="ss">shop_id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span>
-  <span class="ss">preprocessor_id: </span><span class="s1">'8680cc9b-12d5-4bbd-a4ff-f176ef90d676'</span>
-  <span class="ss">config: </span><span class="p">{</span>
-    <span class="ss">username: </span><span class="s1">'some@email.com'</span><span class="p">,</span>
-    <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
-  <span class="p">}</span>
+  <span class="ss">shop_id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span>
 </code></pre>
 <blockquote>
 <p>Example response</p>
@@ -449,18 +444,34 @@ called. The credits are regenerated at a pre-configured rate.</p>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a30c348a-0396-4c86-8aee-3af3c782862c"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon UK"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"062da138-c0c1-46b2-b0fd-b43f9a2ad888"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"auth_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some@email.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"format_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rename"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"SOME_FIELD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecommerse.com/api"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8c4e6d26-4b4d-40c8-88b5-ad814294ce39"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alibaba"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c4cc916b-441f-4244-9ce3-c0cc81a5cc44"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"auth_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some@email.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"format_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rename"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"SOME_FIELD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecommerse.com/api"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -468,11 +479,24 @@ called. The credits are regenerated at a pre-configured rate.</p>
 <p>You can retrieve a list of all the preprocessors configures on the shop.</p>
 <h2 id='add-a-preprocessor'>Add a preprocessor</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">add_shop_preprocessor</span> <span class="p">\</span>
   <span class="ss">shop_id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span>
-  <span class="ss">preprocessor_id: </span><span class="s1">'8680cc9b-12d5-4bbd-a4ff-f176ef90d676'</span>
+  <span class="ss">preprocessor_id: </span><span class="s1">'8680cc9b-12d5-4bbd-a4ff-f176ef90d676'</span><span class="p">,</span>
   <span class="ss">config: </span><span class="p">{</span>
+    <span class="ss">url: </span><span class="s1">'https://e-commerse-system.com/api'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="ss">auth_config: </span><span class="p">{</span>
     <span class="ss">username: </span><span class="s1">'some@email.com'</span><span class="p">,</span>
     <span class="ss">password: </span><span class="s1">'password'</span><span class="p">,</span>
-  <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="ss">format_config: </span><span class="p">{</span>
+    <span class="ss">rename: </span><span class="p">{</span>
+      <span class="no">NAME</span><span class="p">:</span> <span class="ss">:name</span><span class="p">,</span>
+      <span class="no">SIZE</span><span class="p">:</span> <span class="ss">:size</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="ss">aggregate: </span><span class="p">{</span>
+      <span class="ss">id: </span><span class="p">[</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:size</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="ss">remove: </span><span class="p">[</span> <span class="ss">:size</span> <span class="p">],</span>
+  <span class="p">},</span>
 </code></pre>
 <blockquote>
 <p>Example response</p>
@@ -481,9 +505,19 @@ called. The credits are regenerated at a pre-configured rate.</p>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0062fe4-f378-4179-99ab-f5b0b388df85"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dandomain"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8680cc9b-12d5-4bbd-a4ff-f176ef90d676"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"auth_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some@email.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"format_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"rename"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"NAME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SIZE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"size"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"aggregate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"size"</span><span class="p">],</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"remove"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"size"</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -494,7 +528,7 @@ products.</p>
 <h2 id='update-a-preprocessor'>Update a preprocessor</h2><pre class="highlight ruby tab-ruby"><code><span class="n">api</span><span class="p">.</span><span class="nf">update_shop_preprocessor</span> <span class="p">\</span>
   <span class="ss">id: </span><span class="s1">'d0062fe4-f378-4179-99ab-f5b0b388df85'</span>
   <span class="ss">shop_id: </span><span class="s1">'a30c348a-0396-4c86-8aee-3af3c782862c'</span><span class="p">,</span>
-  <span class="ss">config: </span><span class="p">{</span>
+  <span class="ss">auth_config: </span><span class="p">{</span>
     <span class="ss">username: </span><span class="s1">'new@email.com'</span><span class="p">,</span>
     <span class="ss">password: </span><span class="s1">'new-password'</span><span class="p">,</span>
   <span class="p">}</span>
@@ -506,7 +540,7 @@ products.</p>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0062fe4-f378-4179-99ab-f5b0b388df85"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dandomain"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"preprocessor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8680cc9b-12d5-4bbd-a4ff-f176ef90d676"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"auth_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new@email.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-password"</span><span class="w">
   </span><span class="p">}</span><span class="w">
